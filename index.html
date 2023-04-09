@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Observers example</title>
+
+</head>
+<body>
+    <h1 v-text="title"></h1>
+    <div class="form-inline">
+        <div class="form-group">
+        <label for="title">Title: </label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="title" placeholder="Enter title"
+            oninput="onInputChange('title', event)"
+        >
+    </div>
+    <button class="btn btn-default" type="button" onclick="resetTitle()">Reset title</button>
+    </div>
+    <script src="dist/bundle.js"></script>
+</body>
+</html>

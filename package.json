@@ -1,0 +1,27 @@
+{
+  "name": "observable-objects-getters-setters",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RagazziMoscow/observable-objects-getters-setters.git"
+  },
+  "author": "aerodromio <zzaerodromio@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RagazziMoscow/observable-objects-getters-setters/issues"
+  },
+  "homepage": "https://github.com/RagazziMoscow/observable-objects-getters-setters#readme",
+  "devDependencies": {
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
