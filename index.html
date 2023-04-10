@@ -8,18 +8,32 @@
 
 </head>
 <body>
-    <h1 v-text="title"></h1>
     <div class="form-inline">
+        <h1 v-text="title"></h1>
         <div class="form-group">
-        <label for="title">Title: </label>
-        <input 
-            type="text" 
-            class="form-control" 
-            id="title" placeholder="Enter title"
-            oninput="onInputChange('title', event)"
-        >
+            <label for="title">Title: </label>
+            <input
+                v-model="title"
+                type="text"
+                class="form-control"
+                id="title"
+                placeholder="Enter title"
+            >
+        </div>
     </div>
-    <button class="btn btn-default" type="button" onclick="resetTitle()">Reset title</button>
+    <div class="form-inline">
+        <p v-text="firstName"></p>
+        <div class="form-group">
+            <label for="firstName">First Name: </label>
+            <input
+                v-model="firstName"
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder="Enter first name"
+            >
+        </div>
+    </div>
     </div>
     <script src="dist/bundle.js"></script>
 </body>

@@ -14,7 +14,7 @@ export default class Observable {
       }
     }
 
-    this.parseDOM(document.body, obj);
+    this.parseDOM(obj);
   }
 
   private makePropertyReactive(obj: Record<string, any>, property: string) : void {
@@ -48,14 +48,34 @@ export default class Observable {
     this.signals[property].push(callback);
   }
 
-  private parseDOM(node: Node, observable: Record<string, any>): void {
+  private parseDOM(observable: Record<string, any>): void {
     const nodes = Array.from(document.querySelectorAll('[v-text]'));
-  
-    for (const node of nodes) {
-      const property = node.attributes.getNamedItem("v-text").value;  
-      node.textContent = observable[property];
+    const inputs: HTMLInputElement[] = Array.from(document.querySelectorAll('[v-model]'));
+    const elements = [...nodes, ...inputs];
 
-      this.observe(property, () => node.textContent = observable[property]);
+    for (const element of elements) {
+      this.syncElement(element, observable);
+    }
+  }
+
+  private syncElement(element: Element | HTMLInputElement, observable: Record<string, any>): void {
+    const directive = element instanceof HTMLInputElement ? "v-model" : "v-text";
+    const property = element.attributes.getNamedItem(directive).value;
+
+    this.updateElement(element, observable[property]);
+    this.observe(property, () => this.updateElement(element, observable[property]));
+    element.addEventListener("input", (event: Event) => {
+      observable[property] = (event.target as HTMLInputElement).value;
+    });
+  }
+
+  private updateElement(element: Element | HTMLInputElement, value: string): void {
+    const isInput = element instanceof HTMLInputElement;
+
+    if (isInput) {
+      (element as HTMLInputElement).value = value;
+    } else {
+      element.textContent = value;
     }
   }
 }
