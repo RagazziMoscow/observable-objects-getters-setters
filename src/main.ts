@@ -8,3 +8,8 @@ const App = new Observable({
 });
 
 window.App = App;
+
+/**
+ * Idea:
+ * https://www.monterail.com/blog/2016/how-to-build-a-reactive-engine-in-javascript-part-1-observable-objects
+ */
